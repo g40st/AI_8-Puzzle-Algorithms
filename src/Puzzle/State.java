@@ -7,6 +7,8 @@ public class State {
     public int[] array = new int[9];
     public int blankIndex;
     private int depth;
+    private int g;
+    private int h;
     // Anfangsknoten wird incrementiert deshalb -1
     private static int steps = -1;
     private State previous;
@@ -17,6 +19,7 @@ public class State {
         this.blankIndex = getIndex(input, 0);
         this.previous = null;
         this.depth = 0;
+        this.g=0;
     }
     
     public State(State previous, int blankIndex) {
@@ -25,6 +28,7 @@ public class State {
         this.array[blankIndex] = 0;
         this.blankIndex = blankIndex;
         this.depth = previous.depth + 1;
+        this.g = previous.g + 1;
         this.previous = previous;
     }
     
@@ -58,8 +62,30 @@ public class State {
         return s;
     }
     
+    public void calulateH1(State goalState) {
+    	int counter = 0;
+    	for(int i = 0; i < array.length; i++) {
+    		if(goalState.array[i] != this.array[i]) {
+    			counter++;
+    		}
+    	}
+    	this.h = counter;
+    }
+    
     public int getDepth() {
         return depth;
+    }
+    
+    public int getG() {
+    	return g;
+    }
+    
+    public int getH() {
+    	return h;
+    }
+    
+    public int getF() {
+    	return g+h;    	
     }
 
     public int getSteps() {

@@ -47,7 +47,6 @@ public class DFSAlgo {
         this.addToQueue(Move.down(state),newQueue);
         this.addToQueue(Move.up(state),newQueue);
         this.addToQueue(Move.right(state),newQueue);
-
         this.addToQueue(Move.left(state),newQueue);
                 
         while(newQueue.size() > 0) {

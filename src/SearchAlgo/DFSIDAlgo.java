@@ -12,8 +12,7 @@ public class DFSIDAlgo {
 	State state;
     FileWriter fw = new FileWriter("DFSIDAlgo.txt");
     BufferedWriter bw;
-    
-    
+        
     public DFSIDAlgo() throws IOException {
          bw = new BufferedWriter(fw);
          bw.write("Ausgangsknoten: ");    

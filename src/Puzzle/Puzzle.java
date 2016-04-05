@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
+import SearchAlgo.AstarH1;
 import SearchAlgo.BFSAlgo;
 import SearchAlgo.DFSAlgo;
 import SearchAlgo.DFSIDAlgo;
@@ -49,7 +50,16 @@ public class Puzzle {
                 e.printStackTrace();
             }
         	
-        } else {
+        } else if(searchAlgo == 4) {
+        	try {
+        		AstarH1 astarh1 = new AstarH1();
+        		astarh1.solvePuzzle(queue.poll(), goalState);
+        	} catch (IOException e) {
+                e.printStackTrace();
+            }     
+        
+        
+    	} else {
         	System.out.println("falsche Eingabe");	
         }
     }
@@ -58,7 +68,7 @@ public class Puzzle {
         // Ausgangsknoten  
     	//int[] input = {1,2,3,4,5,6,7,8,0};
     	
-    	int[] input = {1,2,3,4,5,6,7,0,8};
+    	//int[] input = {1,2,3,4,5,6,7,0,8};
     	/* 3 Schritte */
         //int[] input = {0,2,3,1,5,6,4,7,8}; 
     	/* 17 Schritte */
@@ -84,7 +94,10 @@ public class Puzzle {
         //int[] input = {0,2,3,1,5,6,4,7,8}; 
         
     	/*BFS 261828 Schritte 12-Ebene | DFSID 403678 Schritte */
-        //int[] input = {1,2,3,4,5,7,8,6,0}; 
+        int[] input = {1,2,3,4,5,7,8,6,0}; 
+    	
+    	//A* Uebungsaufgabe
+    	//int[] input = {1,0,3,4,2,6,7,5,8};
          	
         
     	/* OutOfMemoryError: GC overhead limit exceeded */
@@ -99,7 +112,8 @@ public class Puzzle {
          
         System.out.println("for breadth-first search | type: 1");
         System.out.println("for depth-first search | type: 2");
-        System.out.println("for depth-first search with iterative deepening | type: 3 \n");
+        System.out.println("for depth-first search with iterative deepening | type: 3");
+        System.out.println("for A* with h1 Function | type: 4 \n");
         System.out.print("Auswahl: ");
         searchAlgo = scan.nextInt(); 
         scan.close();
