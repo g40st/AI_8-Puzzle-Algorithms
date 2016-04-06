@@ -63,13 +63,43 @@ public class State {
     }
     
     public void calulateH1(State goalState) {
-    	int counter = 0;
-    	for(int i = 0; i < array.length; i++) {
-    		if(goalState.array[i] != this.array[i]) {
-    			counter++;
-    		}
-    	}
-    	this.h = counter;
+        int counter = 0;
+        for(int i = 0; i < array.length; i++) {
+            if(goalState.array[i] != this.array[i]) {
+                counter++;
+            }
+        }
+        this.h = counter;
+    }
+    
+    
+    private int getArrayIndex(int[] array, int number) {
+        for(int i = 0; i < array.length; i++) {
+            if(number == array[i]) {
+                return i;
+            }   
+        }
+        return -1;
+    }
+    
+    public void calulateH2(State goalState) { /* Manhattan Distance*/
+        int sum = 0;
+        for(int i = 1; i < array.length; i++) {
+            int indexState = getArrayIndex(array,i);
+            int indexGoal = getArrayIndex(goalState.array,i);
+            //System.out.println("Aktuelle Zahl: " + i + " indexState: " + indexState + " indexGoal: " + indexGoal );
+            
+            if(indexState != indexGoal) {
+                int xState = indexState % 3;
+                int yState = indexState / 3;
+                
+                int xGoalState = indexGoal % 3;
+                int yGoalState = indexGoal / 3;
+                
+                sum += Math.abs((xState - xGoalState)) + Math.abs((yState - yGoalState));
+            }
+        }
+        this.h = sum;
     }
     
     public int getDepth() {
@@ -77,15 +107,15 @@ public class State {
     }
     
     public int getG() {
-    	return g;
+        return g;
     }
     
     public int getH() {
-    	return h;
+        return h;
     }
     
     public int getF() {
-    	return g+h;    	
+        return g+h;     
     }
 
     public int getSteps() {
@@ -93,6 +123,6 @@ public class State {
     }
     
     public void incSteps() {
-    	steps++;
+        steps++;
     }
 }

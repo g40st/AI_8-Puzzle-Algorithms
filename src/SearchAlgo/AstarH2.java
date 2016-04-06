@@ -9,29 +9,29 @@ import java.util.PriorityQueue;
 import Puzzle.Move;
 import Puzzle.State;
 
-public class AstarH1 {
+public class AstarH2 {
     State actualState;
-    FileWriter fw = new FileWriter("AstartH1.txt");
+    FileWriter fw = new FileWriter("AstartH2.txt");
     BufferedWriter bw;
     final static int CAPACITY = 10000;
     /** The A * Search priority queue used to solve the puzzle. */
-    StateSort stateSort = new StateSort();
-    PriorityQueue<State> newQueue = new PriorityQueue<State>(CAPACITY, stateSort);
+    StateSortH2 stateSortH2 = new StateSortH2();
+    PriorityQueue<State> newQueue = new PriorityQueue<State>(CAPACITY, stateSortH2);
     
-    public AstarH1() throws IOException {   
+    public AstarH2() throws IOException {   
         bw = new BufferedWriter(fw);
         bw.write("Ausgangsknoten: ");       
     }
     
     private void addToQueue(State nextState, State goalState) throws IOException {
         if(nextState != null) {
-            nextState.calulateH1(goalState);
+            nextState.calulateH2(goalState);
             this.newQueue.add(nextState);
         }
     }
     
     public String solvePuzzle(State state, State goalState) throws IOException {    
-       state.calulateH1(goalState);
+       state.calulateH2(goalState);
         this.newQueue.add(state);
         while(true) {
             if(newQueue.isEmpty()) {
@@ -59,7 +59,7 @@ public class AstarH1 {
     }
 }
 
-class StateSort implements Comparator<State> {
+class StateSortH2 implements Comparator<State> {
     @Override
     public int compare(State o1, State o2) {
           return o1.getF() - o2.getF();
