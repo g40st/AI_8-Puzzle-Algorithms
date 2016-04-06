@@ -76,41 +76,35 @@ public class Puzzle {
     
     public static void main(String[] args) {
         // Ausgangsknoten  
+        /* 0 Ebene */
         //int[] input = {1,2,3,4,5,6,7,8,0};
         
+        /* 1-Ebene */
         //int[] input = {1,2,3,4,5,6,7,0,8};
-        /* 3 Schritte */
-        //int[] input = {0,2,3,1,5,6,4,7,8}; 
-        /* 17 Schritte */
-        //int[] input = {1,0,3,4,2,6,7,5,8}; 
-        /* 1231 Schritte */
-        //int[] input = {4,1,2,5,8,3,7,0,6};    
-        /* 2204 Schritte */
-        //int[] input = {0,5,2,1,8,3,4,7,6};
-        /* xxx Schritte */
-        //int[] input = {2,8,1,0,4,3,7,6,5};
-        /* xxx Schritte */
-        //int[] input = {2,8,1,4,6,3,0,7,5};
-        /* 59 Schritte */
-        //int[] input = {0,1,3,4,2,5,7,8,6};
         
-        /*DFS 4 Schritte 4-Ebene down/right*/
-        //int[] input = {0,2,3,1,5,6,4,7,8}; 
-        
-        /*DFSID 12 Schritte 2-Ebene*/
+        /* 2-Ebene */
         //int[] input = {1,2,3,4,5,6,0,7,8};
         
-        /*DFSID 57 Schritte 4-Ebene*/
-        //int[] input = {0,2,3,1,5,6,4,7,8}; 
+        /* 3-Ebene | Uebungsaufgabe */
+        //int[] input = {1,0,3,4,2,6,7,5,8};
+
+        /* 4 Ebene */
+        //int[] input = {0,1,3,4,2,5,7,8,6};
         
-        /*BFS 261828 Schritte 12-Ebene | DFSID 403678 Schritte */
+        /* 4-Ebene */
+        //int[] input = {0,2,3,1,5,6,4,7,8};
+        
+        /* 7 Ebene */
+        //int[] input = {4,1,2,5,8,3,7,0,6};    
+        
+        /* 8 Ebene */
+        int[] input = {0,5,2,1,8,3,4,7,6};
+        
+        /* 12-Ebene */
         //int[] input = {1,2,3,4,5,7,8,6,0}; 
         
-        //A* Uebungsaufgabe
-        //int[] input = {1,0,3,4,2,6,7,5,8};
-        
-    	/* Ebene 20 */
-        int[] input = {2,5,0,1,4,8,7,3,6};
+        /* 20-Ebene */
+        //int[] input = {2,5,0,1,4,8,7,3,6};
             
         
         /* OutOfMemoryError: GC overhead limit exceeded */
