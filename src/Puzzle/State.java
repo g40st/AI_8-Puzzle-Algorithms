@@ -40,7 +40,7 @@ public class State {
         }
         return -1;
     }
-    
+       
     public boolean isSolved(State goalState) {
         for(int i = 0; i < goalState.array.length; i++) {
             if(goalState.array[i] != this.array[i]) { 
@@ -65,28 +65,20 @@ public class State {
     public void calulateH1(State goalState) {
         int counter = 0;
         for(int i = 0; i < array.length; i++) {
-            if(goalState.array[i] != this.array[i]) {
-                counter++;
-            }
+        	if(array[i] != 0 ) {
+        		if(goalState.array[i] != this.array[i]) {
+        			counter++;
+        		}
+        	}
         }
         this.h = counter;
     }
-    
-    
-    private int getArrayIndex(int[] array, int number) {
-        for(int i = 0; i < array.length; i++) {
-            if(number == array[i]) {
-                return i;
-            }   
-        }
-        return -1;
-    }
-    
+        
     public void calulateH2(State goalState) { /* Manhattan Distance*/
         int sum = 0;
         for(int i = 1; i < array.length; i++) {
-            int indexState = getArrayIndex(array,i);
-            int indexGoal = getArrayIndex(goalState.array,i);
+            int indexState = getIndex(array,i);
+            int indexGoal = getIndex(goalState.array,i);
             //System.out.println("Aktuelle Zahl: " + i + " indexState: " + indexState + " indexGoal: " + indexGoal );
             
             if(indexState != indexGoal) {
