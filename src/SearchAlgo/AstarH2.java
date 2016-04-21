@@ -19,8 +19,7 @@ public class AstarH2 {
     PriorityQueue<State> newQueue = new PriorityQueue<State>(CAPACITY, stateSortH2);
     
     public AstarH2() throws IOException {   
-        bw = new BufferedWriter(fw);
-        bw.write("Ausgangsknoten: ");       
+        bw = new BufferedWriter(fw);    
     }
     
     private void addToQueue(State nextState, State goalState) throws IOException {
@@ -41,12 +40,21 @@ public class AstarH2 {
             }
             actualState = newQueue.poll();
             actualState.incSteps();
-            bw.write(actualState.toString());
-            bw.write("\ng(s): " + actualState.getG() + " // h(s): " + actualState.getH()+ "\n");
-            System.out.println(actualState);
+
             
             if(actualState.isSolved(goalState)) {
-                System.out.println("\nLösung gefunden in Ebene " + actualState.getDepth() + " | Anzahl der Schritte: " + actualState.getSteps());
+            	State tmp = actualState.getParentState();
+            	bw.write("Zielkonoten: ");   
+            	bw.write(actualState.toString());
+                bw.write("\ng(s): " + actualState.getG() + " // h(s): " + actualState.getH()+ "\n");
+                while(tmp != null) {
+                    bw.write(tmp.toString());
+                    bw.write("\ng(s): " + tmp.getG() + " // h(s): " + tmp.getH()+ "\n");
+                    System.out.println(tmp);
+                    tmp = tmp.getParentState();
+                }
+            	
+            	System.out.println("\nLösung gefunden in Ebene " + actualState.getDepth() + " | Anzahl der Schritte: " + actualState.getSteps());
                 bw.write("\n\nLösung gefunden in Ebene: " + actualState.getDepth() + " | Anzahl der Schritte: " + actualState.getSteps()); 
                 bw.close();
                 return "Loesung gefunden";  

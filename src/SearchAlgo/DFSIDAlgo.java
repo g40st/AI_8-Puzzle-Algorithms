@@ -14,8 +14,7 @@ public class DFSIDAlgo {
     BufferedWriter bw;
         
     public DFSIDAlgo() throws IOException {
-         bw = new BufferedWriter(fw);
-         bw.write("Ausgangsknoten: ");    
+         bw = new BufferedWriter(fw);    
     }
     
     private void addToQueue(State nextState, LinkedList<State> newQueue) {
@@ -28,7 +27,6 @@ public class DFSIDAlgo {
         int limitDepth = 0;
         String solution;
         do{
-            bw.write("\n\nTiefenschranke: " + limitDepth + "\n");
             solution = depthFirstSearch(state,goalState,0,limitDepth);
             limitDepth++;
         }while(!solution.equals("Loesung gefunden")); 
@@ -37,14 +35,23 @@ public class DFSIDAlgo {
     private String depthFirstSearch(State state, State goalState, int depth, int limitDepth) throws IOException {
         this.state = state;
         
-         // Ausgabe
-         bw.write(this.state.toString());
-         System.out.println(this.state);
+//         // Ausgabe
+//         bw.write(this.state.toString());
+//         System.out.println(this.state);
          
          // Anzahl der Durchlaeufe
          this.state.incSteps();
          
          if(this.state.isSolved(goalState)) {
+        	State tmp = state.getParentState();
+         	bw.write("Zielkonoten: ");   
+         	bw.write(state.toString());
+             while(tmp != null) {
+                 bw.write(tmp.toString());
+                 System.out.println(tmp);
+                 tmp = tmp.getParentState();
+             }
+        	 
              System.out.println("\nLösung gefunden in Ebene " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps());
              bw.write("\n\nLösung gefunden in Ebene: " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps()); 
              bw.close();

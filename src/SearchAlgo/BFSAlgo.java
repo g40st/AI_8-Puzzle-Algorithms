@@ -16,8 +16,7 @@ public class BFSAlgo {
     Queue<State> newQueue = new LinkedList<State>();
     
     public BFSAlgo() throws IOException {   
-        bw = new BufferedWriter(fw);
-        bw.write("Ausgangsknoten: ");       
+        bw = new BufferedWriter(fw);     
     }
     
     private void addToQueue(State nextState) {
@@ -30,13 +29,21 @@ public class BFSAlgo {
         newQueue = new LinkedList<State>();
         while(!queue.isEmpty()) {
             this.state = queue.poll();
-            bw.write(this.state.toString());
-            System.out.println(this.state);
+//            bw.write(this.state.toString());
+//            System.out.println(this.state);
             
             // Anzahl der Durchlaeufe
             this.state.incSteps();
             
             if(this.state.isSolved(goalState)) {
+            	State tmp = state.getParentState();
+             	bw.write("Zielkonoten: ");   
+             	bw.write(state.toString());
+                while(tmp != null) {
+                    bw.write(tmp.toString());
+                    System.out.println(tmp);
+                    tmp = tmp.getParentState();
+                }
                 System.out.println("\nLösung gefunden in Ebene " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps());
                 bw.write("\n\nLösung gefunden in Ebene: " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps());
                 bw.close();
@@ -49,8 +56,6 @@ public class BFSAlgo {
             
         }
         if(newQueue.size() > 0) {
-            bw.write("\n\nNeue Ebene: " + (this.state.getDepth()+1) + " Anzahl Elemente in Ebene: " + newQueue.size());
-            System.out.println("Neue Ebene: " + this.state.getDepth() + " Anzahl Elemente in Ebene: " + newQueue.size());
             solvePuzzle(newQueue, goalState);
         } else {
             bw.write("keine Lösung!");

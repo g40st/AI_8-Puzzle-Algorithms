@@ -83,7 +83,7 @@ public class Puzzle {
         //int[] input = {1,2,3,4,5,6,7,0,8};
         
         /* 2-Ebene */
-        //int[] input = {1,2,3,4,5,6,0,7,8};
+        int[] input = {1,2,3,4,5,6,0,7,8};
         
         /* 3-Ebene | Uebungsaufgabe */
         //int[] input = {1,0,3,4,2,6,7,5,8};
@@ -98,7 +98,7 @@ public class Puzzle {
         //int[] input = {4,1,2,5,8,3,7,0,6};    
         
         /* 8 Ebene */
-        int[] input = {0,5,2,1,8,3,4,7,6};
+        //int[] input = {0,5,2,1,8,3,4,7,6};
         
         /* 12-Ebene */
         //int[] input = {1,2,3,4,5,7,8,6,0}; 
@@ -116,7 +116,7 @@ public class Puzzle {
 
         Puzzle puzzle = new Puzzle(input);
         Scanner scan = new Scanner(System.in);
-         
+     
         System.out.println("for breadth-first search | type: 1");
         System.out.println("for depth-first search | type: 2");
         System.out.println("for depth-first search with iterative deepening | type: 3");

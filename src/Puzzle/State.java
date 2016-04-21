@@ -98,6 +98,10 @@ public class State {
         return depth;
     }
     
+    public State getParentState() {
+    	return this.previous;
+    }
+    
     public int getG() {
         return g;
     }
