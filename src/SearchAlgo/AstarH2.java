@@ -43,9 +43,9 @@ public class AstarH2 {
 
             
             if(actualState.isSolved(goalState)) {
-            	State tmp = actualState.getParentState();
-            	bw.write("Zielkonoten: ");   
-            	bw.write(actualState.toString());
+                State tmp = actualState.getParentState();
+                bw.write("Zielkonoten: ");   
+                bw.write(actualState.toString());
                 bw.write("\ng(s): " + actualState.getG() + " // h(s): " + actualState.getH()+ "\n");
                 while(tmp != null) {
                     bw.write(tmp.toString());
@@ -53,8 +53,8 @@ public class AstarH2 {
                     System.out.println(tmp);
                     tmp = tmp.getParentState();
                 }
-            	
-            	System.out.println("\nLösung gefunden in Ebene " + actualState.getDepth() + " | Anzahl der Schritte: " + actualState.getSteps());
+                
+                System.out.println("\nLösung gefunden in Ebene " + actualState.getDepth() + " | Anzahl der Schritte: " + actualState.getSteps());
                 bw.write("\n\nLösung gefunden in Ebene: " + actualState.getDepth() + " | Anzahl der Schritte: " + actualState.getSteps()); 
                 bw.close();
                 return "Loesung gefunden";  

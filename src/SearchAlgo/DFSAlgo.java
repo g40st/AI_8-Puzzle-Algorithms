@@ -28,23 +28,23 @@ public class DFSAlgo {
         this.state = state;
         
         // Ausgabe
-//        bw.write(this.state.toString());
-//        System.out.println(this.state);
+        //bw.write(this.state.toString());
+        //System.out.println(this.state);
         
         // Anzahl der Durchlaeufe
         this.state.incSteps();
         
         if(this.state.isSolved(goalState)) {
-        	State tmp = state.getParentState();
-         	bw.write("Zielkonoten: ");   
-         	bw.write(state.toString());
-             while(tmp != null) {
-                 bw.write(tmp.toString());
-                 System.out.println(tmp);
-                 tmp = tmp.getParentState();
-             }
-        	
-        	System.out.println("\nLösung gefunden in Ebene " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps());
+            State tmp = state.getParentState();
+            bw.write("Zielkonoten: ");   
+            bw.write(state.toString());
+            while(tmp != null) {
+                bw.write(tmp.toString());
+                System.out.println(tmp);
+                tmp = tmp.getParentState();
+            }
+            
+            System.out.println("\nLösung gefunden in Ebene " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps());
             bw.write("\n\nLösung gefunden in Ebene: " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps()); 
             bw.close();
             return "Loesung gefunden";

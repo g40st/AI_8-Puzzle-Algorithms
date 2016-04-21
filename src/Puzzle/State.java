@@ -65,11 +65,11 @@ public class State {
     public void calulateH1(State goalState) {
         int counter = 0;
         for(int i = 0; i < array.length; i++) {
-        	if(array[i] != 0 ) {
-        		if(goalState.array[i] != this.array[i]) {
-        			counter++;
-        		}
-        	}
+            if(array[i] != 0 ) {
+                if(goalState.array[i] != this.array[i]) {
+                    counter++;
+                }
+            }
         }
         this.h = counter;
     }
@@ -99,7 +99,7 @@ public class State {
     }
     
     public State getParentState() {
-    	return this.previous;
+        return this.previous;
     }
     
     public int getG() {

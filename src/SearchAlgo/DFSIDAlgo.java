@@ -35,42 +35,42 @@ public class DFSIDAlgo {
     private String depthFirstSearch(State state, State goalState, int depth, int limitDepth) throws IOException {
         this.state = state;
         
-//         // Ausgabe
-//         bw.write(this.state.toString());
-//         System.out.println(this.state);
+        // Ausgabe
+        //bw.write(this.state.toString());
+        //System.out.println(this.state);
          
-         // Anzahl der Durchlaeufe
-         this.state.incSteps();
+        // Anzahl der Durchlaeufe
+        this.state.incSteps();
          
-         if(this.state.isSolved(goalState)) {
+        if(this.state.isSolved(goalState)) {
         	State tmp = state.getParentState();
          	bw.write("Zielkonoten: ");   
          	bw.write(state.toString());
-             while(tmp != null) {
-                 bw.write(tmp.toString());
-                 System.out.println(tmp);
-                 tmp = tmp.getParentState();
-             }
+            while(tmp != null) {
+                bw.write(tmp.toString());
+                System.out.println(tmp);
+                tmp = tmp.getParentState();
+            }
         	 
-             System.out.println("\nLösung gefunden in Ebene " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps());
-             bw.write("\n\nLösung gefunden in Ebene: " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps()); 
-             bw.close();
-             return "Loesung gefunden";
+            System.out.println("\nLösung gefunden in Ebene " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps());
+            bw.write("\n\nLösung gefunden in Ebene: " + this.state.getDepth() + " | Anzahl der Schritte: " + this.state.getSteps()); 
+            bw.close();
+            return "Loesung gefunden";
          }
                        
-         // Nachfolger
-         LinkedList<State> newQueue = new LinkedList<State>();   
-         this.addToQueue(Move.up(state), newQueue);
-         this.addToQueue(Move.left(state), newQueue);
-         this.addToQueue(Move.down(state), newQueue);
-         this.addToQueue(Move.right(state), newQueue);   
-         
-         while(!newQueue.isEmpty() && depth < limitDepth) {
-             String solution = depthFirstSearch(newQueue.poll(), goalState, (depth+1), limitDepth);
-             if(solution.equals("Loesung gefunden")) {
-                 return "Loesung gefunden";
-             }
-         }
-         return "keine Lösung gefunden";    
+        // Nachfolger
+        LinkedList<State> newQueue = new LinkedList<State>();   
+        this.addToQueue(Move.up(state), newQueue);
+        this.addToQueue(Move.left(state), newQueue);
+        this.addToQueue(Move.down(state), newQueue);
+        this.addToQueue(Move.right(state), newQueue);   
+        
+        while(!newQueue.isEmpty() && depth < limitDepth) {
+            String solution = depthFirstSearch(newQueue.poll(), goalState, (depth+1), limitDepth);
+            if(solution.equals("Loesung gefunden")) {
+                return "Loesung gefunden";
+            }
+        }
+        return "keine Lösung gefunden";    
     }  
 }

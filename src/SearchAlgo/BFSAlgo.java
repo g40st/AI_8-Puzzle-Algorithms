@@ -29,16 +29,16 @@ public class BFSAlgo {
         newQueue = new LinkedList<State>();
         while(!queue.isEmpty()) {
             this.state = queue.poll();
-//            bw.write(this.state.toString());
-//            System.out.println(this.state);
+            //bw.write(this.state.toString());
+            //System.out.println(this.state);
             
             // Anzahl der Durchlaeufe
             this.state.incSteps();
             
             if(this.state.isSolved(goalState)) {
-            	State tmp = state.getParentState();
-             	bw.write("Zielkonoten: ");   
-             	bw.write(state.toString());
+                State tmp = state.getParentState();
+                bw.write("Zielkonoten: ");   
+                bw.write(state.toString());
                 while(tmp != null) {
                     bw.write(tmp.toString());
                     System.out.println(tmp);
