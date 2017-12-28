@@ -21,7 +21,7 @@ This repository contains the following algorithms:
 
 ## Installing / Getting started
 
-Import this reporistory as a new project in eclipse.
+Import this repository as a new project in eclipse.
 
 ## Author
 Christian Högerle 
